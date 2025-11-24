@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>College Registration - Career Guidance</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/styles.css">
+  <style>
+    .main-content { background: rgb(42, 41, 41); }
+    .hero::after { background: rgb(40, 38, 38); }
+    .feature-card { background: rgb(18, 18, 18); }
+    .feature-card p { color: #ffffff; }
+    .content-box { background: rgb(42, 41, 41); }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header class="header">
+      <h1>🎓 Career Guidance Platform</h1>
+      <div class="user-info">
+        <span id="user-name">Loading...</span>
+        <button class="btn btn-small" id="logout-btn">Logout</button>
+      </div>
+    </header>
+
+    <main class="page-container">
+      <div class="content-box">
+        <h2>College Application Process</h2>
+        <div id="college-info" class="info-box">
+          <!-- College information will be loaded here -->
+        </div>
+
+        <div class="registration-steps">
+          <h3>Application Steps</h3>
+          <ol class="steps-list">
+            <li class="step-item completed">
+              <span class="step-number">1</span>
+              <div class="step-content">
+                <h4>College Selection</h4>
+                <p>You have selected your preferred college</p>
+              </div>
+            </li>
+            <li class="step-item active">
+              <span class="step-number">2</span>
+              <div class="step-content">
+                <h4>Complete Your Profile</h4>
+                <p>Provide your personal and academic details</p>
+              </div>
+            </li>
+            <li class="step-item">
+              <span class="step-number">3</span>
+              <div class="step-content">
+                <h4>Eligibility Check</h4>
+                <p>System will verify your eligibility</p>
+              </div>
+            </li>
+            <li class="step-item">
+              <span class="step-number">4</span>
+              <div class="step-content">
+                <h4>Aptitude Test</h4>
+                <p>Complete the mandatory aptitude test</p>
+              </div>
+            </li>
+            <li class="step-item">
+              <span class="step-number">5</span>
+              <div class="step-content">
+                <h4>Application Review</h4>
+                <p>College will review your application</p>
+              </div>
+            </li>
+          </ol>
+        </div>
+
+        <div id="eligibility-info" class="info-box">
+          <h4>Eligibility Requirements</h4>
+          <div id="eligibility-criteria">
+            <!-- Eligibility criteria will be loaded here -->
+          </div>
+        </div>
+
+        <div class="action-section">
+          <h3>Ready to Apply?</h3>
+          <p>Click the button below to proceed with your application</p>
+          <div class="action-buttons">
+            <button class="btn btn-secondary" id="back-btn">← Back to College Details</button>
+            <button class="btn btn-primary btn-large" id="proceed-btn">
+              Proceed to Student Details →
+            </button>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer class="footer">
+      <p>&copy; 2025 Career Guidance Platform. All rights reserved.</p>
+    </footer>
+  </div>
+
+  <!-- Firebase SDK -->
+  <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
+
+  <script type="module" src="/js/config/firebase-config.js"></script>
+  <script type="module" src="/js/pages/college-registration.js"></script>
+</body>
+</html>
+
+

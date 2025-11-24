@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Career Guidance - Home 🎓</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/styles.css">
+  <style>
+    /* Additional animations for homepage */
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-20px); }
+    }
+    
+    .feature-card:nth-child(1) { animation: fadeInUp 0.8s ease-out 0.1s both; }
+    .feature-card:nth-child(2) { animation: fadeInUp 0.8s ease-out 0.2s both; }
+    .feature-card:nth-child(3) { animation: fadeInUp 0.8s ease-out 0.3s both; }
+    .feature-card:nth-child(4) { animation: fadeInUp 0.8s ease-out 0.4s both; }
+    .feature-card:nth-child(5) { animation: fadeInUp 0.8s ease-out 0.5s both; }
+    .feature-card:nth-child(6) { animation: fadeInUp 0.8s ease-out 0.6s both; }
+    
+    .hero .icon {
+      font-size: 5rem;
+      display: block;
+      margin: 0 auto 30px;
+      animation: float 3s ease-in-out infinite;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header class="header">
+      <h1>🎓 Career Guidance Platform</h1>
+      <p>Find Your Perfect College & Course</p>
+    </header>
+
+    <main class="main-content">
+      <div class="hero">
+        <span class="icon">🚀</span>
+        <h2>Welcome to Your Future</h2>
+        <p>Discover the best engineering and management colleges in India and abroad</p>
+        
+        <div class="cta-buttons">
+          <a href="/student-login.html" class="btn btn-primary">Student Login 👤</a>
+          <a href="/student-signup.html" class="btn btn-secondary">Student Sign Up ✨</a>
+          <a href="/admin-login.html" class="btn btn-admin">Admin Login 🔐</a>
+        </div>
+      </div>
+
+      <div class="features">
+        <h3>✨ Our Features ✨</h3>
+        <div class="feature-grid">
+          <div class="feature-card">
+            <span class="icon">🏛️</span>
+            <h4>College Discovery</h4>
+            <p>Browse thousands of colleges with detailed information and reviews</p>
+          </div>
+          <div class="feature-card">
+            <span class="icon">📊</span>
+            <h4>Aptitude Test</h4>
+            <p>Assess your skills with comprehensive tests and get personalized recommendations</p>
+          </div>
+          <div class="feature-card">
+            <span class="icon">🌍</span>
+            <h4>Global Options</h4>
+            <p>Explore premium colleges in India and top universities abroad</p>
+          </div>
+          <div class="feature-card">
+            <span class="icon">💰</span>
+            <h4>Fee Comparison</h4>
+            <p>Compare tuition, housing, and total costs across multiple institutions</p>
+          </div>
+          <div class="feature-card">
+            <span class="icon">🎯</span>
+            <h4>Smart Filtering</h4>
+            <p>Filter by ranking, location, budget, and specific course requirements</p>
+          </div>
+          <div class="feature-card">
+            <span class="icon">📝</span>
+            <h4>Easy Application</h4>
+            <p>Apply to multiple colleges seamlessly with our streamlined process</p>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer class="footer">
+      <p>&copy; 2025 Career Guidance Platform. All rights reserved. Made with ❤️ in India</p>
+    </footer>
+  </div>
+
+  <!-- Firebase SDK -->
+  <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
+
+  <script src="/js/utils/logger.js"></script>
+  <script>
+    // Log page view
+    Logger.info('Home page loaded');
+    
+    // Enhanced interactivity with particle effects
+    document.querySelectorAll('.feature-card').forEach(card => {
+      card.addEventListener('mouseenter', () => {
+        card.style.transform = 'translateY(-15px) scale(1.05) rotate(2deg)';
+        
+        // Particle burst effect
+        for(let i = 0; i < 12; i++) {
+          const particle = document.createElement('div');
+          const angle = (360 / 12) * i;
+          const distance = 80;
+          
+          particle.style.cssText = `
+            position: absolute;
+            width: 6px;
+            height: 6px;
+            background: linear-gradient(135deg, #00d4ff, #b829ff);
+            border-radius: 50%;
+            pointer-events: none;
+            left: 50%;
+            top: 50%;
+            box-shadow: 0 0 10px #00d4ff, 0 0 20px #b829ff;
+            animation: particleBurst 0.8s ease-out forwards;
+            transform-origin: center;
+          `;
+          
+          particle.style.setProperty('--angle', angle + 'deg');
+          particle.style.setProperty('--distance', distance + 'px');
+          
+          card.appendChild(particle);
+          setTimeout(() => particle.remove(), 800);
+        }
+      });
+      
+      card.addEventListener('mouseleave', () => {
+        card.style.transform = '';
+      });
+    });
+    
+    // Mouse trail effect
+    let trails = [];
+    document.addEventListener('mousemove', (e) => {
+      if(trails.length > 50) return; // Limit trails
+      
+      const trail = document.createElement('div');
+      trail.style.cssText = `
+        position: fixed;
+        width: 8px;
+        height: 8px;
+        background: radial-gradient(circle, #00d4ff 0%, transparent 70%);
+        border-radius: 50%;
+        pointer-events: none;
+        left: ${e.clientX - 4}px;
+        top: ${e.clientY - 4}px;
+        z-index: 9999;
+        animation: trailFade 0.6s ease-out forwards;
+        box-shadow: 0 0 10px #00d4ff, 0 0 20px #00d4ff80;
+      `;
+      
+      document.body.appendChild(trail);
+      trails.push(trail);
+      
+      setTimeout(() => {
+        trail.remove();
+        trails = trails.filter(t => t !== trail);
+      }, 600);
+    });
+    
+    // Add particle burst animation
+    const style = document.createElement('style');
+    style.textContent = `
+      @keyframes particleBurst {
+        0% {
+          transform: translate(-50%, -50%) rotate(var(--angle)) translateY(0) scale(1);
+          opacity: 1;
+        }
+        100% {
+          transform: translate(-50%, -50%) rotate(var(--angle)) translateY(var(--distance)) scale(0);
+          opacity: 0;
+        }
+      }
+      
+      @keyframes trailFade {
+        0% {
+          transform: scale(1);
+          opacity: 1;
+        }
+        100% {
+          transform: scale(0);
+          opacity: 0;
+        }
+      }
+    `;
+    document.head.appendChild(style);
+  </script>
+</body>
+</html>
+
+

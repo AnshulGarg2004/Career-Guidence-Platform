@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Details - Career Guidance</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/styles.css">
+  <style>
+    .main-content { background: rgb(42, 41, 41); }
+    .hero::after { background: rgb(40, 38, 38); }
+    .feature-card { background: rgb(18, 18, 18); }
+    .feature-card p { color: #ffffff; }
+    .content-box { background: rgb(42, 41, 41); }
+    .info-card { background: rgb(18, 18, 18); color: #ffffff; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header class="header">
+      <h1>🎓 Career Guidance Platform</h1>
+      <div class="user-info">
+        <span id="user-name">Loading...</span>
+        <button class="btn btn-small" id="logout-btn">Logout</button>
+      </div>
+    </header>
+
+    <main class="page-container">
+      <div class="content-box">
+        <h2>Complete Your Profile</h2>
+        <p class="subtitle">Please provide the following information for your college application</p>
+
+        <div id="error-message" class="error-message" style="display: none;"></div>
+        <div id="success-message" class="success-message" style="display: none;"></div>
+
+        <form id="student-details-form">
+          <h3>Personal Information</h3>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="fullName">Full Name *</label>
+              <input type="text" id="fullName" name="fullName" required>
+            </div>
+            <div class="form-group">
+              <label for="dob">Date of Birth *</label>
+              <input type="date" id="dob" name="dob" required>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="gender">Gender *</label>
+              <select id="gender" name="gender" required>
+                <option value="">Select Gender</option>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="phone">Phone Number *</label>
+              <input type="tel" id="phone" name="phone" required>
+            </div>
+          </div>
+
+          <h3>Academic Information</h3>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="highSchool">High School Name *</label>
+              <input type="text" id="highSchool" name="highSchool" required>
+            </div>
+            <div class="form-group">
+              <label for="passYear">Year of Passing *</label>
+              <input type="number" id="passYear" name="passYear" required min="2000" max="2030">
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="cgpa">CGPA/Percentage *</label>
+              <input type="number" id="cgpa" name="cgpa" required step="0.01" min="0" max="100">
+            </div>
+            <div class="form-group">
+              <label for="entranceExam">Entrance Exam</label>
+              <input type="text" id="entranceExam" name="entranceExam" 
+                     placeholder="e.g., JEE, CAT, NEET">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="entranceScore">Entrance Exam Score</label>
+            <input type="number" id="entranceScore" name="entranceScore" 
+                   placeholder="Enter your score">
+          </div>
+
+          <h3>Address Information</h3>
+          <div class="form-group">
+            <label for="address">Street Address *</label>
+            <input type="text" id="address" name="address" required>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="city">City *</label>
+              <input type="text" id="city" name="city" required>
+            </div>
+            <div class="form-group">
+              <label for="state">State *</label>
+              <input type="text" id="state" name="state" required>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="country">Country *</label>
+              <input type="text" id="country" name="country" required>
+            </div>
+            <div class="form-group">
+              <label for="pincode">PIN Code *</label>
+              <input type="text" id="pincode" name="pincode" required>
+            </div>
+          </div>
+
+          <div class="form-actions">
+            <button type="button" class="btn btn-secondary" id="back-btn">← Back</button>
+            <button type="submit" class="btn btn-primary" id="save-btn">
+              Save & Continue to Aptitude Test
+            </button>
+          </div>
+        </form>
+      </div>
+    </main>
+
+    <footer class="footer">
+      <p>&copy; 2025 Career Guidance Platform. All rights reserved.</p>
+    </footer>
+  </div>
+
+  <!-- Firebase SDK -->
+  <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
+
+  <script type="module" src="/js/config/firebase-config.js"></script>
+  <script type="module" src="/js/pages/student-details.js"></script>
+</body>
+</html>
+
+

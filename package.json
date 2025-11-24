@@ -1,0 +1,33 @@
+{
+  "name": "career-guidance-app",
+  "version": "1.0.0",
+  "description": "A comprehensive career guidance web application for students",
+  "main": "server/server.js",
+  "scripts": {
+    "start": "node server/server.js",
+    "dev": "nodemon server/server.js",
+    "test": "echo \"Tests will be added\" && exit 0"
+  },
+  "keywords": [
+    "career-guidance",
+    "education",
+    "college-finder",
+    "aptitude-test"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "express-validator": "^7.0.1",
+    "firebase": "^12.6.0",
+    "firebase-admin": "^11.11.0",
+    "helmet": "^7.1.0",
+    "winston": "^3.11.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  }
+}

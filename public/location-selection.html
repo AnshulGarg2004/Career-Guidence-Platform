@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Location Selection - Career Guidance</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/styles.css">
+  <style>
+    .main-content { background: rgb(42, 41, 41); }
+    .hero::after { background: rgb(40, 38, 38); }
+    .feature-card { background: rgb(18, 18, 18); }
+    .feature-card p { color: #ffffff; }
+    .content-box { background: rgb(42, 41, 41); }
+    .location-card { background: rgb(18, 18, 18); color: #ffffff; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header class="header">
+      <h1>🎓 Career Guidance Platform</h1>
+      <div class="user-info">
+        <span id="user-name">Loading...</span>
+        <button class="btn btn-small" id="logout-btn">Logout</button>
+      </div>
+    </header>
+
+    <main class="page-container">
+      <div class="progress-bar">
+        <div class="progress-step completed">1. Career</div>
+        <div class="progress-step active">2. Location</div>
+        <div class="progress-step">3. Colleges</div>
+        <div class="progress-step">4. Apply</div>
+      </div>
+
+      <div class="content-box">
+        <h2>Select Study Location</h2>
+        <p class="subtitle">Where would you like to pursue your education?</p>
+
+        <div id="career-info" class="info-box"></div>
+
+        <div class="location-grid">
+          <div class="location-card" data-location="INDIA">
+            <span class="location-icon">🇮🇳</span>
+            <h3>INDIA</h3>
+            <p>Explore top colleges across India</p>
+            <ul class="location-features">
+              <li>✓ IITs, NITs, and Premier Institutions</li>
+              <li>✓ Affordable Education</li>
+              <li>✓ Cultural Familiarity</li>
+              <li>✓ Diverse Course Options</li>
+            </ul>
+            <button class="btn btn-primary btn-large">Choose India</button>
+          </div>
+
+          <div class="location-card" data-location="ABROAD">
+            <span class="location-icon">🌍</span>
+            <h3>ABROAD</h3>
+            <p>Discover international universities</p>
+            <ul class="location-features">
+              <li>✓ World-Class Universities</li>
+              <li>✓ Global Exposure</li>
+              <li>✓ Advanced Research Facilities</li>
+              <li>✓ International Networks</li>
+            </ul>
+            <button class="btn btn-primary btn-large">Choose Abroad</button>
+          </div>
+        </div>
+
+        <div class="navigation-buttons">
+          <button class="btn btn-secondary" id="back-btn">← Back to Career Selection</button>
+        </div>
+      </div>
+    </main>
+
+    <footer class="footer">
+      <p>&copy; 2025 Career Guidance Platform. All rights reserved.</p>
+    </footer>
+  </div>
+
+  <!-- Firebase SDK -->
+  <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
+
+  <script type="module" src="/js/config/firebase-config.js"></script>
+  <script type="module" src="/js/pages/location-selection.js"></script>
+</body>
+</html>
+
+

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aptitude Test - Career Guidance</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+  <div class="container">
+    <header class="header">
+      <h1>🎓 Career Guidance Platform</h1>
+      <div class="user-info">
+        <span id="user-name">Loading...</span>
+        <div class="timer" id="timer">Time: 00:00</div>
+        <button class="btn btn-small" id="logout-btn">Logout</button>
+      </div>
+    </header>
+
+    <main class="page-container">
+      <div class="content-box">
+        <h2>Aptitude Test</h2>
+        <p class="subtitle">This test consists of three sections: Verbal, Quantitative, and General Knowledge</p>
+
+        <div id="test-info" class="info-box">
+          <p><strong>Instructions:</strong></p>
+          <ul>
+            <li>The test contains multiple-choice questions (MCQs)</li>
+            <li>Each question has only one correct answer</li>
+            <li>You can navigate between questions</li>
+            <li>Click "Submit Test" when you're done</li>
+            <li>Make sure to answer all questions before submitting</li>
+          </ul>
+        </div>
+
+        <div id="loading" class="loading" style="display: none;">Loading test...</div>
+        <div id="error-message" class="error-message" style="display: none;"></div>
+
+        <div id="test-container" style="display: none;">
+          <div class="test-progress">
+            <div class="progress-info">
+              <span>Question <span id="current-question">1</span> of <span id="total-questions">0</span></span>
+              <span>Section: <span id="current-section">Verbal</span></span>
+            </div>
+            <div class="progress-bar-container">
+              <div class="progress-bar-fill" id="progress-fill"></div>
+            </div>
+          </div>
+
+          <div id="question-container" class="question-box">
+            <!-- Questions will be loaded here -->
+          </div>
+
+          <div class="test-navigation">
+            <button class="btn btn-secondary" id="prev-btn" disabled>← Previous</button>
+            <button class="btn btn-secondary" id="next-btn">Next →</button>
+            <button class="btn btn-primary" id="submit-btn" style="display: none;">Submit Test</button>
+          </div>
+
+          <div class="question-palette">
+            <h4>Question Palette</h4>
+            <div id="palette-container"></div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer class="footer">
+      <p>&copy; 2025 Career Guidance Platform. All rights reserved.</p>
+    </footer>
+  </div>
+
+  <!-- Firebase SDK -->
+  <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
+
+  <script type="module" src="/js/config/firebase-config.js"></script>
+  <script type="module" src="/js/pages/aptitude-test.js"></script>
+</body>
+</html>
+
+

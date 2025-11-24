@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>College Details - Career Guidance</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/styles.css">
+  <style>
+    .main-content { background: rgb(42, 41, 41); }
+    .hero::after { background: rgb(40, 38, 38); }
+    .feature-card { background: rgb(18, 18, 18); }
+    .feature-card p { color: #ffffff; }
+    .content-box { background: rgb(42, 41, 41); color: #ffffff; }
+    .info-card { background: rgb(18, 18, 18); color: #ffffff; }
+    .facility-item { background: rgb(18, 18, 18); color: #ffffff; }
+    .stat-box { background: linear-gradient(135deg, #8b5cf6 0%, #ec4899 50%, #a855f7 100%); }
+    .highlight-box { background: linear-gradient(135deg, #8b5cf6 0%, #ec4899 50%, #a855f7 100%); color: #ffffff; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header class="header">
+      <h1>🎓 Career Guidance Platform</h1>
+      <div class="user-info">
+        <span id="user-name">Loading...</span>
+        <button class="btn btn-small" id="logout-btn">Logout</button>
+      </div>
+    </header>
+
+    <main class="page-container">
+      <div id="loading" class="loading" style="display: block;">Loading college details...</div>
+      <div id="error-message" class="error-message" style="display: none;"></div>
+
+      <div id="college-details" class="content-box" style="display: none;">
+        <!-- College details will be loaded here -->
+      </div>
+
+      <div class="navigation-buttons">
+        <button class="btn btn-secondary" id="back-btn">← Back to College List</button>
+        <button class="btn btn-primary" id="apply-btn">Apply to This College</button>
+      </div>
+    </main>
+
+    <footer class="footer">
+      <p>&copy; 2025 Career Guidance Platform. All rights reserved.</p>
+    </footer>
+  </div>
+
+  <!-- Firebase SDK -->
+  <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
+
+  <script type="module" src="/js/config/firebase-config.js"></script>
+  <script type="module" src="/js/pages/college-details.js"></script>
+</body>
+</html>
+
+
