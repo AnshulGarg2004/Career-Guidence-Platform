@@ -10,6 +10,8 @@ yarn.lock
 
 # Firebase (Keep config template, ignore real credentials)
 server/config/serviceAccountKey.json
+Firebase
+firebase-config.js
 
 # Logs
 logs/
