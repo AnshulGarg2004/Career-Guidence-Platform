@@ -9,14 +9,16 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/css/styles.css">
   <style>
-    .main-content { background: rgb(42, 41, 41); }
-    .hero::after { background: rgb(40, 38, 38); }
-    .feature-card { background: rgb(18, 18, 18); }
-    .feature-card p { color: #ffffff; }
-    .auth-box { background: rgb(18, 18, 18); color: #ffffff; }
-    .auth-box h2 { color: #8b5cf6; }
-    .form-group label { color: #d0d0d0; }
-    .form-group input { background: rgb(30, 30, 30); color: #ffffff; border: 1px solid rgba(139, 92, 246, 0.3); }
+    .form-group input {
+      background: rgba(255, 255, 255, 0.1);
+      color: #ffffff;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      backdrop-filter: blur(10px);
+    }
+    .form-group input:focus {
+      border-color: rgba(255, 255, 255, 0.5);
+      background: rgba(255, 255, 255, 0.15);
+    }
   </style>
 </head>
 <body>

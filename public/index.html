@@ -9,24 +9,55 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/css/styles.css">
   <style>
-    /* Additional animations for homepage */
-    @keyframes float {
-      0%, 100% { transform: translateY(0px); }
-      50% { transform: translateY(-20px); }
+    /* Additional premium effects */
+    .btn {
+      position: relative;
+      z-index: 1;
     }
     
-    .feature-card:nth-child(1) { animation: fadeInUp 0.8s ease-out 0.1s both; }
-    .feature-card:nth-child(2) { animation: fadeInUp 0.8s ease-out 0.2s both; }
-    .feature-card:nth-child(3) { animation: fadeInUp 0.8s ease-out 0.3s both; }
-    .feature-card:nth-child(4) { animation: fadeInUp 0.8s ease-out 0.4s both; }
-    .feature-card:nth-child(5) { animation: fadeInUp 0.8s ease-out 0.5s both; }
-    .feature-card:nth-child(6) { animation: fadeInUp 0.8s ease-out 0.6s both; }
+    .btn::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 0;
+      height: 0;
+      background: radial-gradient(circle, rgba(255,255,255,0.3) 0%, transparent 70%);
+      transition: all 0.6s;
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+      z-index: -1;
+    }
     
-    .hero .icon {
-      font-size: 5rem;
-      display: block;
-      margin: 0 auto 30px;
-      animation: float 3s ease-in-out infinite;
+    .btn:hover::after {
+      width: 300px;
+      height: 300px;
+    }
+    
+    /* Floating particles */
+    .container::before {
+      content: '✨';
+      position: absolute;
+      top: 10%;
+      left: 10%;
+      font-size: 2rem;
+      animation: floatParticle 6s ease-in-out infinite;
+      opacity: 0.7;
+    }
+    
+    .container::after {
+      content: '🌟';
+      position: absolute;
+      top: 20%;
+      right: 15%;
+      font-size: 1.5rem;
+      animation: floatParticle 8s ease-in-out infinite reverse;
+      opacity: 0.6;
+    }
+    
+    @keyframes floatParticle {
+      0%, 100% { transform: translateY(0px) rotate(0deg); }
+      50% { transform: translateY(-30px) rotate(180deg); }
     }
   </style>
 </head>
@@ -41,7 +72,7 @@
       <div class="hero">
         <span class="icon">🚀</span>
         <h2>Welcome to Your Future</h2>
-        <p>Discover the best engineering and management colleges in India and abroad</p>
+        <p>Discover the best engineering and management colleges in India and abroad - IITs, NITs, IIMs, and top international universities</p>
         
         <div class="cta-buttons">
           <a href="/student-login.html" class="btn btn-primary">Student Login 👤</a>
@@ -102,62 +133,72 @@
     // Log page view
     Logger.info('Home page loaded');
     
-    // Enhanced interactivity with particle effects
-    document.querySelectorAll('.feature-card').forEach(card => {
+    // Premium particle effects
+    document.querySelectorAll('.feature-card').forEach((card, index) => {
       card.addEventListener('mouseenter', () => {
-        card.style.transform = 'translateY(-15px) scale(1.05) rotate(2deg)';
-        
-        // Particle burst effect
-        for(let i = 0; i < 12; i++) {
+        // Rainbow particle burst
+        for(let i = 0; i < 20; i++) {
           const particle = document.createElement('div');
-          const angle = (360 / 12) * i;
-          const distance = 80;
+          const angle = (360 / 20) * i;
+          const distance = 100 + Math.random() * 50;
+          const colors = ['#ff6b6b', '#feca57', '#48dbfb', '#ff9ff3', '#54a0ff'];
+          const color = colors[Math.floor(Math.random() * colors.length)];
           
           particle.style.cssText = `
             position: absolute;
-            width: 6px;
-            height: 6px;
-            background: linear-gradient(135deg, #00d4ff, #b829ff);
+            width: ${4 + Math.random() * 6}px;
+            height: ${4 + Math.random() * 6}px;
+            background: ${color};
             border-radius: 50%;
             pointer-events: none;
             left: 50%;
             top: 50%;
-            box-shadow: 0 0 10px #00d4ff, 0 0 20px #b829ff;
-            animation: particleBurst 0.8s ease-out forwards;
+            box-shadow: 0 0 20px ${color}, 0 0 40px ${color};
+            animation: premiumBurst 1.2s ease-out forwards;
             transform-origin: center;
+            z-index: 1000;
           `;
           
           particle.style.setProperty('--angle', angle + 'deg');
           particle.style.setProperty('--distance', distance + 'px');
           
           card.appendChild(particle);
-          setTimeout(() => particle.remove(), 800);
+          setTimeout(() => particle.remove(), 1200);
         }
+        
+        // Glow effect
+        card.style.boxShadow = '0 0 50px rgba(255, 255, 255, 0.5), 0 40px 80px rgba(0, 0, 0, 0.3)';
       });
       
       card.addEventListener('mouseleave', () => {
-        card.style.transform = '';
+        card.style.boxShadow = '';
       });
     });
     
-    // Mouse trail effect
+    // Premium rainbow mouse trail
     let trails = [];
+    const colors = ['#ff6b6b', '#feca57', '#48dbfb', '#ff9ff3', '#54a0ff', '#5f27cd'];
+    let colorIndex = 0;
+    
     document.addEventListener('mousemove', (e) => {
-      if(trails.length > 50) return; // Limit trails
+      if(trails.length > 30) return;
       
       const trail = document.createElement('div');
+      const color = colors[colorIndex % colors.length];
+      colorIndex++;
+      
       trail.style.cssText = `
         position: fixed;
-        width: 8px;
-        height: 8px;
-        background: radial-gradient(circle, #00d4ff 0%, transparent 70%);
+        width: 12px;
+        height: 12px;
+        background: radial-gradient(circle, ${color} 0%, transparent 70%);
         border-radius: 50%;
         pointer-events: none;
-        left: ${e.clientX - 4}px;
-        top: ${e.clientY - 4}px;
+        left: ${e.clientX - 6}px;
+        top: ${e.clientY - 6}px;
         z-index: 9999;
-        animation: trailFade 0.6s ease-out forwards;
-        box-shadow: 0 0 10px #00d4ff, 0 0 20px #00d4ff80;
+        animation: premiumTrail 1s ease-out forwards;
+        box-shadow: 0 0 20px ${color}, 0 0 40px ${color}80;
       `;
       
       document.body.appendChild(trail);
@@ -166,13 +207,35 @@
       setTimeout(() => {
         trail.remove();
         trails = trails.filter(t => t !== trail);
-      }, 600);
+      }, 1000);
     });
     
-    // Add particle burst animation
+    // Premium button hover effects
+    document.querySelectorAll('.btn').forEach(btn => {
+      btn.addEventListener('mouseenter', () => {
+        // Ripple effect
+        const ripple = document.createElement('div');
+        ripple.style.cssText = `
+          position: absolute;
+          width: 0;
+          height: 0;
+          background: radial-gradient(circle, rgba(255,255,255,0.4) 0%, transparent 70%);
+          border-radius: 50%;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          animation: rippleEffect 0.8s ease-out;
+          pointer-events: none;
+        `;
+        btn.appendChild(ripple);
+        setTimeout(() => ripple.remove(), 800);
+      });
+    });
+    
+    // Add premium animation keyframes
     const style = document.createElement('style');
     style.textContent = `
-      @keyframes particleBurst {
+      @keyframes premiumBurst {
         0% {
           transform: translate(-50%, -50%) rotate(var(--angle)) translateY(0) scale(1);
           opacity: 1;
@@ -183,13 +246,26 @@
         }
       }
       
-      @keyframes trailFade {
+      @keyframes premiumTrail {
         0% {
-          transform: scale(1);
+          transform: scale(1) rotate(0deg);
           opacity: 1;
         }
         100% {
-          transform: scale(0);
+          transform: scale(0) rotate(360deg);
+          opacity: 0;
+        }
+      }
+      
+      @keyframes rippleEffect {
+        0% {
+          width: 0;
+          height: 0;
+          opacity: 1;
+        }
+        100% {
+          width: 200px;
+          height: 200px;
           opacity: 0;
         }
       }
